@@ -1,0 +1,1 @@
+This POC was just for me to see if I could generate puzzles of the form "Insert mathematical operations into the string 123456789 to equal X." I accomplished this with minimal use of chatgpt. I only used +,-,*,/ and parentheses, each one being used exactly once. This was all done very crudely.
