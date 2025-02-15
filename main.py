@@ -11,7 +11,7 @@ except ImportError:
 def insert_string(string: str, index: int, value: str) -> str:
     return string[:index] + value + string[index:len(string)]
 
-
+# Very crude method to insert operations.
 def insert_operations(numbers: str,
                       add: bool = True,
                       subtract: bool = True,
@@ -50,26 +50,6 @@ def insert_operations(numbers: str,
     return numbers
 
 
-def find_digit_sequences(s):
-    result = []
-    start_index = None
-    for i, char in enumerate(s):
-        if char.isdigit():
-            if start_index is None:
-                start_index = i  # mark the start of a sequence
-        else:
-            if start_index is not None:
-                result.append([start_index, i - start_index])  # add the sequence
-                start_index = None  # reset for the next sequence
-    if start_index is not None:  # Handle case where string ends with digits
-        result.append([start_index, len(s) - start_index])
-    return result
-
-# Example usage:
-s = "abc123xyz4567abc89"
-sequences = find_digit_sequences(s) #[[3, 3], [9, 4], [15, 2]]
-
-
 def perform_actions(string: str) -> float:
 
     return eval(string)
@@ -90,7 +70,7 @@ def insert_multi_if_needed(string: str) -> str:
 
 #Example
 data = []
-for i in range(100000):
+for i in range(1000000):
     puzzle = insert_operations('123456789')
     puzzle_ = insert_multi_if_needed((puzzle))
     try:
@@ -107,4 +87,6 @@ for i in range(100000):
 df = pd.DataFrame(columns=['string', 'result', 'type'], data = data)
 df = df[df['type']=='int'][['string', 'result']]
 df.sort_values(by='result', inplace=True)
-print(df.head(15))
+
+# Solution to TEK Tehtävät Pulma 1, Helmikuu, 2025.
+print(df[df['result']==2025.0].head(15))
